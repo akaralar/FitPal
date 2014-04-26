@@ -9,8 +9,13 @@
 #import "FPExcerciseViewController.h"
 #import <UIView+AutoLayout/UIView+AutoLayout.h>
 
-NSInteger const kExcerciseDuration = 1.0;
-NSInteger const kRestDuration = 1.0;
+typedef NS_ENUM(NSInteger, FPTimerDuration) {
+    FPTimerDurationExcercise,
+    FPTimerDurationRest
+};
+
+NSTimeInterval const kExcerciseDuration = 1.0;
+NSTimeInterval const kRestDuration = 1.0;
 
 @interface FPExcerciseViewController ()
 
@@ -21,8 +26,10 @@ NSInteger const kRestDuration = 1.0;
 @property (nonatomic) NSArray *excerciseImages;
 @property (nonatomic) UIScrollView *excerciseViewer;
 @property (nonatomic) NSTimer *countDownTimer;
+@property (nonatomic) UILabel *pageNumber;
 
 - (void)countDown:(NSTimer *)timer;
+- (void)fireTimerForDuration:(FPTimerDuration)timerDuration;
 
 @end
 
@@ -44,6 +51,7 @@ NSInteger const kRestDuration = 1.0;
     self.navigationController.navigationBarHidden = YES;
     self.excerciseViewer = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.excerciseViewer];
+    
     self.excerciseViewer.pagingEnabled = YES;
     self.excerciseViewer.userInteractionEnabled = NO;
     
@@ -75,7 +83,6 @@ NSInteger const kRestDuration = 1.0;
     
     self.excerciseViewer.contentSize = CGSizeMake(self.excerciseImages.count * 320, 568);
     
-    NSLog(@"contentSize = %@", NSStringFromCGSize(self.excerciseViewer.contentSize));
     self.restCounter = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rest-timer"]];
     [self.view addSubview:self.restCounter];
     self.restCounter.frame = CGRectMake(108, 423, CGRectGetWidth(self.restCounter.bounds), CGRectGetHeight(self.restCounter.bounds));
@@ -99,30 +106,11 @@ NSInteger const kRestDuration = 1.0;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.targetDate = [[NSDate date] dateByAddingTimeInterval:kExcerciseDuration];
-    NSLog(@"%@", [NSDate date]);
-    NSLog(@"%@", self.targetDate);
-    
-//    self.countDownTimer = [[NSTimer alloc] initWithFireDate:[NSDate date]
-//                                                   interval:0.1
-//                                                     target:self
-//                                                   selector:@selector(countDown:)
-//                                                   userInfo:nil
-//                                                    repeats:YES];
-    self.countDownTimer = [NSTimer timerWithTimeInterval:0.1
-                                                  target:self
-                                                selector:@selector(countDown:)
-                                                userInfo:nil
-                                                 repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
-    
-    [self.countDownTimer fire];
+    [self fireTimerForDuration:FPTimerDurationExcercise];
 }
 
 - (void)countDown:(NSTimer *)timer
 {
-    NSLog(@"count down");
     NSTimeInterval remaining = [self.targetDate timeIntervalSinceDate:[NSDate date]];
     
     if (remaining > 0) {
@@ -137,11 +125,9 @@ NSInteger const kRestDuration = 1.0;
         
         CGPoint contentOffset = self.excerciseViewer.contentOffset;
         
-        if (contentOffset.x + 320.0 == self.excerciseViewer.contentSize.width) {
+        if (contentOffset.x == self.excerciseViewer.contentSize.width - CGRectGetWidth(self.excerciseViewer.bounds)) {
             
-        }
-        
-        if (((int)(contentOffset.x / 320.0) % 2) == 0) {
+        } else if (((int)(contentOffset.x / 320.0) % 2) == 0) {
             
             [UIView animateWithDuration:0.2
                              animations:^{
@@ -151,19 +137,11 @@ NSInteger const kRestDuration = 1.0;
                              }
                              completion:^(BOOL finished) {
                                 
-                                 self.counter.hidden = YES;
-                                 self.targetDate = [[NSDate date] dateByAddingTimeInterval:kRestDuration];
-                                 self.countDownTimer = [NSTimer timerWithTimeInterval:0.1
-                                                                               target:self
-                                                                             selector:@selector(countDown:)
-                                                                             userInfo:nil
-                                                                              repeats:YES];
-                                 [[NSRunLoop mainRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
-                                 [self.countDownTimer fire];
+                                 [self fireTimerForDuration:FPTimerDurationRest];
                                  
                              }];
         } else {
-            self.counter.hidden = NO;
+
             [UIView animateWithDuration:0.2
                              animations:^{
                                  
@@ -171,16 +149,8 @@ NSInteger const kRestDuration = 1.0;
                                  self.counter.alpha = 1.0;
                              }
                              completion:^(BOOL finished) {
-                                
-                                 
-                                 self.targetDate = [[NSDate date] dateByAddingTimeInterval:kExcerciseDuration];
-                                 self.countDownTimer = [NSTimer timerWithTimeInterval:0.1
-                                                                               target:self
-                                                                             selector:@selector(countDown:)
-                                                                             userInfo:nil
-                                                                              repeats:YES];
-                                 [[NSRunLoop mainRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
-                                 [self.countDownTimer fire];
+                             
+                                 [self fireTimerForDuration:FPTimerDurationExcercise];
                              }];
             
         }
@@ -192,4 +162,17 @@ NSInteger const kRestDuration = 1.0;
     return YES;
 }
 
+- (void)fireTimerForDuration:(FPTimerDuration)timerDuration
+{
+    NSTimeInterval duration = timerDuration == FPTimerDurationExcercise ? kExcerciseDuration : kRestDuration ;
+    self.targetDate = [[NSDate date] dateByAddingTimeInterval:duration];
+    self.countDownTimer = [NSTimer timerWithTimeInterval:0.1
+                                                  target:self
+                                                selector:@selector(countDown:)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.countDownTimer
+                              forMode:NSRunLoopCommonModes];
+    [self.countDownTimer fire];
+}
 @end
