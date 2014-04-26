@@ -7,6 +7,7 @@
 //
 
 #import "FPAppDelegate.h"
+#import "FPNavigationController.h"
 
 @implementation FPAppDelegate
 
@@ -14,6 +15,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    FPNavigationController *navCont = [[FPNavigationController alloc] init];
+    
+    self.window.rootViewController = navCont;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
