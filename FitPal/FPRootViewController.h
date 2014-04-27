@@ -11,5 +11,6 @@
 @interface FPRootViewController : UIViewController
 
 - (instancetype)initWithImage:(UIImage *)image buttonImage:(UIImage *)buttonImage;
+- (void)buttonTapped:(id)sender;
 
 @end

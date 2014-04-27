@@ -17,8 +17,6 @@
 @property (nonatomic) UIImageView *background;
 @property (nonatomic) UIButton *button;
 
-- (void)buttonTapped:(id)sender;
-
 @end
 
 @implementation FPRootViewController

@@ -121,6 +121,8 @@ NSTimeInterval const kRestDuration = 1.0;
     
     } else {
         
+        self.countDownLabel.text = @"0.0";
+        
         [timer invalidate];
         
         CGPoint contentOffset = self.excerciseViewer.contentOffset;
@@ -173,6 +175,7 @@ NSTimeInterval const kRestDuration = 1.0;
                                                  repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.countDownTimer
                               forMode:NSRunLoopCommonModes];
+    self.countDownLabel.text = [NSString stringWithFormat:@"%0.1f", kRestDuration];
     [self.countDownTimer fire];
 }
 @end
