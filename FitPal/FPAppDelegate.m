@@ -7,12 +7,22 @@
 //
 
 #import "FPAppDelegate.h"
+
 #import "FPNavigationController.h"
+
+#import <PayPal-iOS-SDK/PayPalMobile.h>
+
+//NSInteger const PayPalProductionClientID =
+NSString * const PayPalSandboxClientID = @"AYGKChDeXt-Pt0sSZ7C5fOJfJ_ms-TkQMy-RCrQ3CbkneW0jLJg_nwqGncUF";
+
+
 
 @implementation FPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : PayPalSandboxClientID}];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
@@ -22,6 +32,14 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [[NSDate date] dateByAddingTimeInterval:10.0];;
+    localNotification.alertBody = @"You haven't done your 7 min workout today!";
+    localNotification.alertAction = @"Let's do it!";
+    localNotification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"EET"];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
     return YES;
 }
 

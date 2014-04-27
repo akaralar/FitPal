@@ -9,6 +9,7 @@
 #import "FPNavigationController.h"
 #import "FPRootViewController.h"
 #import "FPExcerciseViewController.h"
+#import "FPPaypalViewController.h"
 
 @interface FPNavigationController ()
 
@@ -45,7 +46,7 @@
                                                                 buttonImage:[UIImage imageNamed:@"button1"]];
     FPRootViewController *vc2 = [[FPRootViewController alloc] initWithImage:[UIImage imageNamed:@"Landing2"]
                                                                 buttonImage:[UIImage imageNamed:@"button2"]];
-    FPRootViewController *vc3 = [[FPRootViewController alloc] initWithImage:[UIImage imageNamed:@"Landing3"]
+    FPRootViewController *vc3 = [[FPPaypalViewController alloc] initWithImage:[UIImage imageNamed:@"Landing3"]
                                                                 buttonImage:[UIImage imageNamed:@"button3"]];
     FPRootViewController *vc4 = [[FPRootViewController alloc] initWithImage:[UIImage imageNamed:@"Landing4"]
                                                                 buttonImage:[UIImage imageNamed:@"button4"]];

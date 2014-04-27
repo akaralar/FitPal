@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, FPTimerDuration) {
     FPTimerDurationRest
 };
 
-NSTimeInterval const kExcerciseDuration = 1.0;
+NSTimeInterval const kExcerciseDuration = 2.0;
 NSTimeInterval const kRestDuration = 1.0;
 
 @interface FPExcerciseViewController ()

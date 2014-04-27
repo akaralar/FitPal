@@ -20,19 +20,24 @@ PODS:
     - AFNetworking/NSURLSession
   - PayPal-iOS-SDK (2.0.5)
   - UIView+AutoLayout (1.3.0)
+  - UPPlatformSDK (1.1.1)
 
 DEPENDENCIES:
   - AFNetworking
   - PayPal-iOS-SDK (from `https://raw.githubusercontent.com/akaralar/Specs/a631e8308e1a50b130d85ab4f90f0643673ab020/PayPal-iOS-SDK/2.0.3/PayPal-iOS-SDK.podspec`)
   - UIView+AutoLayout
+  - UPPlatformSDK (from `https://raw.githubusercontent.com/akaralar/Specs/5a2cb8b82354beb03418089d83be51c668754cc2/UPPlatformSDK/1.1/UPPlatformSDK.podspec`)
 
 EXTERNAL SOURCES:
   PayPal-iOS-SDK:
     :podspec: https://raw.githubusercontent.com/akaralar/Specs/a631e8308e1a50b130d85ab4f90f0643673ab020/PayPal-iOS-SDK/2.0.3/PayPal-iOS-SDK.podspec
+  UPPlatformSDK:
+    :podspec: https://raw.githubusercontent.com/akaralar/Specs/5a2cb8b82354beb03418089d83be51c668754cc2/UPPlatformSDK/1.1/UPPlatformSDK.podspec
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
   PayPal-iOS-SDK: 38073121917d5b6d2ea1eea3c6e074072844700c
   UIView+AutoLayout: 43373a18797954fd8ee3b1423af364f1b80a2af8
+  UPPlatformSDK: d66f9c8fa12ee5b402d3534a6d6a5fd329c2209b
 
 COCOAPODS: 0.32.1
