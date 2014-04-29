@@ -10,6 +10,8 @@
 #import "FPRootViewController.h"
 #import "FPExcerciseViewController.h"
 #import "FPPaypalViewController.h"
+#import "FPJawboneViewController.h"
+#import "FPFinalViewController.h"
 
 @interface FPNavigationController ()
 
@@ -20,6 +22,15 @@
 @end
 
 @implementation FPNavigationController
+
+- (void)reset
+{
+    self.controllers = nil;
+    self.viewControllers = nil;
+    self.controllers = [self prepareControllers];
+    [self showNextPage];
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,13 +59,14 @@
                                                                 buttonImage:[UIImage imageNamed:@"button2"]];
     FPRootViewController *vc3 = [[FPPaypalViewController alloc] initWithImage:[UIImage imageNamed:@"Landing3"]
                                                                 buttonImage:[UIImage imageNamed:@"button3"]];
-    FPRootViewController *vc4 = [[FPRootViewController alloc] initWithImage:[UIImage imageNamed:@"Landing4"]
+    FPRootViewController *vc4 = [[FPJawboneViewController alloc] initWithImage:[UIImage imageNamed:@"Landing4"]
                                                                 buttonImage:[UIImage imageNamed:@"button4"]];
     FPRootViewController *vc5 = [[FPRootViewController alloc] initWithImage:[UIImage imageNamed:@"Landing5"]
                                                                 buttonImage:[UIImage imageNamed:@"button5"]];
     FPExcerciseViewController *excerciseVC = [[FPExcerciseViewController alloc] init];
+    FPFinalViewController *finalVC = [[FPFinalViewController alloc] init];
 
-    return @[vc1, vc2, vc3, vc4, vc5, excerciseVC];
+    return @[vc1, vc2, vc3, vc4, vc5, excerciseVC, finalVC];
 }
 
 - (void)showNextPage

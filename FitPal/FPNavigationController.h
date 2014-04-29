@@ -11,5 +11,6 @@
 @interface FPNavigationController : UINavigationController
 
 - (void)showNextPage;
+- (void)reset;
 
 @end

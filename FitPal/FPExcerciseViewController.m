@@ -8,6 +8,7 @@
 
 #import "FPExcerciseViewController.h"
 #import <UIView+AutoLayout/UIView+AutoLayout.h>
+#import "FPNavigationController.h"
 
 typedef NS_ENUM(NSInteger, FPTimerDuration) {
     FPTimerDurationExcercise,
@@ -129,6 +130,9 @@ NSTimeInterval const kRestDuration = 1.0;
         
         if (contentOffset.x == self.excerciseViewer.contentSize.width - CGRectGetWidth(self.excerciseViewer.bounds)) {
             
+            FPNavigationController *navCont = (FPNavigationController *)self.navigationController;
+            [navCont showNextPage];
+
         } else if (((int)(contentOffset.x / 320.0) % 2) == 0) {
             
             [UIView animateWithDuration:0.2

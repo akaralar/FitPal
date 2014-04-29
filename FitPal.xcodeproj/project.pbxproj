@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		33D9011975BB46E398171822 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA03B47164C4D2296F3661D /* libPods.a */; };
 		5711E9A6190C881D00897026 /* FPPaypalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711E9A5190C881D00897026 /* FPPaypalViewController.m */; };
+		575D875E190CFCCC0060E317 /* FPJawboneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 575D875D190CFCCC0060E317 /* FPJawboneViewController.m */; };
+		575D8761190CFFF40060E317 /* FPFinalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 575D8760190CFFF40060E317 /* FPFinalViewController.m */; };
 		57AE2796190BF06C00EE8AD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AE2795190BF06C00EE8AD8 /* Foundation.framework */; };
 		57AE2798190BF06C00EE8AD8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AE2797190BF06C00EE8AD8 /* CoreGraphics.framework */; };
 		57AE279A190BF06C00EE8AD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AE2799190BF06C00EE8AD8 /* UIKit.framework */; };
@@ -39,6 +41,10 @@
 /* Begin PBXFileReference section */
 		5711E9A4190C881D00897026 /* FPPaypalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPaypalViewController.h; sourceTree = "<group>"; };
 		5711E9A5190C881D00897026 /* FPPaypalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPaypalViewController.m; sourceTree = "<group>"; };
+		575D875C190CFCCC0060E317 /* FPJawboneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPJawboneViewController.h; sourceTree = "<group>"; };
+		575D875D190CFCCC0060E317 /* FPJawboneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPJawboneViewController.m; sourceTree = "<group>"; };
+		575D875F190CFFF40060E317 /* FPFinalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFinalViewController.h; sourceTree = "<group>"; };
+		575D8760190CFFF40060E317 /* FPFinalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFinalViewController.m; sourceTree = "<group>"; };
 		57AE2792190BF06C00EE8AD8 /* FitPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AE2795190BF06C00EE8AD8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		57AE2797190BF06C00EE8AD8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +143,10 @@
 				57AE27CB190C02F700EE8AD8 /* FPExcerciseViewController.m */,
 				5711E9A4190C881D00897026 /* FPPaypalViewController.h */,
 				5711E9A5190C881D00897026 /* FPPaypalViewController.m */,
+				575D875C190CFCCC0060E317 /* FPJawboneViewController.h */,
+				575D875D190CFCCC0060E317 /* FPJawboneViewController.m */,
+				575D875F190CFFF40060E317 /* FPFinalViewController.h */,
+				575D8760190CFFF40060E317 /* FPFinalViewController.m */,
 			);
 			path = FitPal;
 			sourceTree = "<group>";
@@ -301,6 +311,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575D875E190CFCCC0060E317 /* FPJawboneViewController.m in Sources */,
+				575D8761190CFFF40060E317 /* FPFinalViewController.m in Sources */,
 				57AE27C6190BF40600EE8AD8 /* FPRootViewController.m in Sources */,
 				57AE27A6190BF06C00EE8AD8 /* FPAppDelegate.m in Sources */,
 				57AE27C9190BFC8700EE8AD8 /* FPNavigationController.m in Sources */,
